@@ -6,7 +6,6 @@ import {
   DatetimeString,
   QuestionId,
 } from "../../../models";
-import _ from "lodash";
 import { answerDateRange, loadAnswers } from "../../../lib/data";
 import { addDays, nextMonth, startOfMonth } from "../../../lib/date";
 

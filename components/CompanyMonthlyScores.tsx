@@ -12,7 +12,7 @@ const visibleQuestions: { [key: QuestionId]: string } = {
 
 const CompanyMonthlyScores = ({ scores }: CompanyMonthlyScoresProps) => (
   <div className="company-monthly-scores">
-    {Object.entries(visibleQuestions).map(([questionId, question]) => (
+    {Object.entries(visibleQuestions).map(([questionId]) => (
       <div key={questionId}>
         <h4>{visibleQuestions[questionId]}</h4>
         <SentimentChart
