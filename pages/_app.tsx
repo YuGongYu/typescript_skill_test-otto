@@ -5,4 +5,3 @@ import "../styles.scss";
 export default function AppWithScss({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
-

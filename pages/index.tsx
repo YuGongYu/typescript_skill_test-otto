@@ -6,7 +6,7 @@ import { getCompanies, getAnswers } from "../lib/api";
 
 const Home = () => {
   const [companies, setCompanies] = useState(
-    undefined as Company[] | undefined
+    undefined as Company[] | undefined,
   );
   const [answers, setAnswers] = useState(undefined as Answer[] | undefined);
   useEffect(() => {
