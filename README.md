@@ -199,6 +199,8 @@ I was thinking that maybe I should collect actual stock prices for each month an
 - Used endpoint data in app
 - Created SVG chart
 - Little bit SASS
+- Added some unit tests for library code
+- Added linter
 
 
 ### What I would do
