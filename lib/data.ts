@@ -6,7 +6,7 @@ export type AnswerPredicate = (answer: Answer) => boolean;
 
 function loadAnswers(predicates: AnswerPredicate[] = []): Answer[] {
   return JSON.parse(fs.readFileSync("data.json", "utf-8")).filter((answer) => {
-    if (answer.skip === false) {
+    if (answer.skip === true) {
       return false;
     }
     return _.every(predicates, (fn) => fn(answer));

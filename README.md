@@ -174,3 +174,35 @@ Object.entries(questionCompanyFreq).sort((qf1, qf2) => qf1[0] > qf2[0] ? -1 : (q
 Looks like questions `Lähivuosien tuloskasvunäkymät` and `Kilpailuetujen vahvuus` have good amount of responses.
 
 Lets try to chart that somehow, there should be some correlation between them.
+
+
+## Changes and findings
+
+### What I planned to do
+I ended up trying to visualize latest sentiment (last twelve months) in charts.
+
+![Screenshot](./data/screenshot.png)
+
+What it does is aggregates answers by company, question and month and then chooses two questions that had lot anwsers.
+
+- Pitkän aikavälin houkuttelevuus
+- Lähivuosien tuloskasvunäkymät
+
+I was thinking that maybe I should collect actual stock prices for each month and compare the sentiment to actual realized results, but I wasn't quite sure how far should you look ahead. How long time is "Pitkän aikavälin"? five/ten years?
+
+
+### What I did
+- Updated npm packages
+- Added prettier code formatting
+- Added new endpoint for calculating this aggregrated data
+- Extracted data and date handling functions as library functions
+- Used endpoint data in app
+- Created SVG chart
+- Little bit SASS
+
+
+### What I would do
+- JSON data has a lot of duplicate data, endpoints throw lot of data away, normalize it into SQLite for example.
+- Figure out better use case for the data, maybe compare against market data. Can Inderes community really predict the future or is it more like that sentiment follows stock prices?
+- Use linter
+- Use real charting library

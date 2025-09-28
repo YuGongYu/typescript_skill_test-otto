@@ -13,7 +13,7 @@ const Home = () => {
   );
   useEffect(() => {
     getCompanies().then(setCompanies);
-    getLTMCompanyAggregatedAnswersMap(new Date(2020, 5)).then(setScoreMap);
+    getLTMCompanyAggregatedAnswersMap(new Date(2020, 12)).then(setScoreMap);
   }, []);
   return (
     <div className="index">
