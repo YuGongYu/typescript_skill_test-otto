@@ -206,5 +206,4 @@ I was thinking that maybe I should collect actual stock prices for each month an
 ### What I would do
 - JSON data has a lot of duplicate data, endpoints throw lot of data away, normalize it into SQLite for example.
 - Figure out better use case for the data, maybe compare against market data. Can Inderes community really predict the future or is it more like that sentiment follows stock prices?
-- Use linter
 - Use real charting library
