@@ -1,28 +1,20 @@
-import { Answer, ScoreByIsinQuery } from "../../../models"
+import { ScoreByIsinQuery } from "../../../models"
 
 import _ from "lodash"
-import fs from 'fs'
-
-const millisecond = 1
-const second = 1000 * millisecond
-const minute = 60 * second
-const hour = 60 * minute
-const day = 24 * hour
-const month = 30 * day
+import { answerCompany, answerDateRange, loadAnswers } from "../../../lib/data"
+import { addDays } from "../../../lib/date"
 
 export default async (req, res) => {
     const { isin, date }: ScoreByIsinQuery = req.query
 
     const end = date ? new Date(date) : new Date()
-    const start = new Date(+ end - 6 * month)
+    // about six months
+    const start = addDays(end, -6 * 30)
 
-    let answers: Answer[] = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
-
-    answers = answers
-        .filter(answer => answer.company.isin === isin)
-        .filter(answer => new Date(answer.created) < end)
-        .filter(answer => new Date(answer.created) >= start)
-        .filter(answer => answer.skip === false)
+    const answers = loadAnswers([
+        answerDateRange(start, end),
+        answerCompany(isin)
+    ])
 
     const company = _.first(answers)?.company
     const score = _.meanBy(answers, 'value')

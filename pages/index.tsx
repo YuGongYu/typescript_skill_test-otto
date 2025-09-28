@@ -2,7 +2,7 @@ import { Answer, Company } from "../models";
 import { useEffect, useState } from "react";
 
 import CompanyViewer from "../components/CompanyViewer";
-import axios from "axios";
+import { getCompanies, getAnswers } from "../lib/api";
 
 const Home = () => {
   const [companies, setCompanies] = useState(
@@ -10,8 +10,8 @@ const Home = () => {
   );
   const [answers, setAnswers] = useState(undefined as Answer[] | undefined);
   useEffect(() => {
-    axios.get("/api/companies").then((response) => setCompanies(response.data));
-    axios.get("/api/answers").then((response) => setAnswers(response.data));
+    getCompanies().then((response) => setCompanies(response.data));
+    getAnswers().then((response) => setAnswers(response.data));
   }, []);
   return (
     <div>
