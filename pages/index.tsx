@@ -1,25 +1,24 @@
-import { Answer, Company } from "../models";
+import { AnswerScoreMap, Company } from "../models";
 import { useEffect, useState } from "react";
 
 import CompanyViewer from "../components/CompanyViewer";
-import { getCompanies, getAnswers } from "../lib/api";
+import { getCompanies, getLTMCompanyAggregatedAnswersMap } from "../lib/api";
 
 const Home = () => {
   const [companies, setCompanies] = useState(
     undefined as Company[] | undefined,
   );
-  const [answers, setAnswers] = useState(undefined as Answer[] | undefined);
+  const [scoreMap, setScoreMap] = useState(
+    undefined as AnswerScoreMap | undefined,
+  );
   useEffect(() => {
-    getCompanies().then((response) => setCompanies(response.data));
-    getAnswers().then((response) => setAnswers(response.data));
+    getCompanies().then(setCompanies);
+    getLTMCompanyAggregatedAnswersMap(new Date(2020, 5)).then(setScoreMap);
   }, []);
   return (
-    <div>
+    <div className="index">
       <h1>Home</h1>
-      {companies && <CompanyViewer companies={companies} />}
-      {answers && (
-        <p>There is a total of {answers.length} answers in the dataset.</p>
-      )}
+      {companies && <CompanyViewer companies={companies} scoreMap={scoreMap} />}
     </div>
   );
 };

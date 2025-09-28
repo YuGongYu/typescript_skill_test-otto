@@ -65,3 +65,13 @@ export interface AggregatedAnswerScore {
   companyIsin: CompanyISIN;
   questionId: QuestionId;
 }
+
+export type AnswerScoreMap = Map<
+  CompanyISIN,
+  Map<QuestionId, AggregatedAnswerScore[]>
+>;
+
+export interface ChartDatapoint {
+  start: Date;
+  value: number;
+}

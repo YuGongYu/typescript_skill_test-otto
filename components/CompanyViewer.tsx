@@ -1,18 +1,24 @@
-import { Company } from "../models";
+import { AnswerScoreMap, Company } from "../models";
+import CompanyMonthlyScores from "./CompanyMonthlyScores";
 
 interface CompanyViewerProps {
   companies: Company[];
+  scoreMap: AnswerScoreMap | undefined;
 }
 
-const CompanyViewer = ({ companies }: CompanyViewerProps) => (
-  <div>
+const CompanyViewer = ({ companies, scoreMap }: CompanyViewerProps) => (
+  <div className="company-viewer">
     <h2>There are a few companies:</h2>
-    {companies.map((company) => (
-      <div key={company.id}>
-        <h3>{company.title}</h3>
-        <h4>{company.isin}</h4>
-      </div>
-    ))}
+    <div className="companies">
+      {companies.map((company) => (
+        <div key={company.id}>
+          <h3>{company.title}</h3>
+          {scoreMap && scoreMap.has(company.isin) && (
+            <CompanyMonthlyScores scores={scoreMap.get(company.isin)} />
+          )}
+        </div>
+      ))}
+    </div>
   </div>
 );
 

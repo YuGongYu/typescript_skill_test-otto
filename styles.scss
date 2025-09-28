@@ -1,9 +1,44 @@
 // SCSS can be written just like CSS, it's just a bit more advanced
 
+html {
+  background-color: #f0f0f0;
+}
+
 body {
   font-family: sans-serif;
+  width: 1000px;
+  margin: 3rem auto;
+  background-color: white;
+  padding: 2rem;
 }
 
 * {
   font-family: sans-serif;
+}
+
+.index {
+  h1 {
+    margin-bottom: 3rem;
+  }
+}
+
+.company-viewer {
+  & > .companies {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.company-monthly-scores {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  width: 100%;
+}
+
+.sentiment-chart {
+  border: 1px solid #cccccc;
+  height: 100px;
 }
